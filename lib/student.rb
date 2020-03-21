@@ -23,8 +23,9 @@ class Student
       LIMIT 1
     SQL
     
-    DB[:conn].execute(sql, name)
-    binding.pry
+    DB[:conn].execute(sql, name).collect do |row|
+      self.new_from_db(row)
+    end
   end
   
   def save
