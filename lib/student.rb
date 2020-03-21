@@ -77,6 +77,8 @@ class Student
       FROM students
       WHERE grade = ?
     SQL
+    
+    DB[:conn].execute(sql, num)
   end
 
   def self.find_by_name(name)
